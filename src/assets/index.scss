@@ -1,0 +1,36 @@
+.App {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-between;
+  }
+
+  .App > div{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .all-cats > div, .homeless-cats > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 30vw;
+  }
+
+  .container {
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & .icon {width: 15%; text-align: center; font-size: 36px;}
+    & .info {
+        width: 80%;
+
+        p {font-size:0.75em;}
+    }
+
+  }

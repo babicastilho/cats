@@ -1,23 +1,34 @@
 import React, { Component } from "react";
-import AllCatsList from "./components/AllCatsList";
-import NeighborsCatsList from "./components/NeighborsCatsList";
+import AllCats from "./components/allCats";
+import NeighborsCats from "./components/neighborsCats";
 import { CatsContext } from "./context/catsContext";
 
 export default class App extends Component {
     render() {
-        return (<div className="flex h-100 w-100 bg-black text-white justify-around p-10">
-        <div className="bg-gray-400 rounded-md text-black flex flex-col gap-2">
-          <h2 className="text-center mt-2 text-xl">All generated cats</h2>
-          {this.context.cats.map((cat) => (<AllCatsList cat={cat} key={cat.id}/>))}
-        </div>
-        <div className="bg-gray-400 rounded-md text-black flex flex-col gap-2 h-min">
-          <h2 className="text-center mt-2 text-xl">
-            Cats adopted by my neighbor
-          </h2>
-          {this.context.cats
-                .filter((a) => !a.hasCollar)
-                .map((cat) => (<NeighborsCatsList cat={cat} key={cat.id}/>))}
-        </div>
+        return (
+        
+        <div className="App">
+            <div className="all-cats list-group">
+            <div className="list-group-item active" aria-current="true">
+                        <div className="d-flex">
+                            <h5 className="mb-1">All cats</h5>
+                        </div>
+                        
+                    </div>
+                {this.context.cats.map((cat) => (<AllCats cat={cat} key={cat.id}/>))}
+            </div>
+        
+            <div className="homeless-cats list-group">
+            <div className="list-group-item active" aria-current="true">
+                        <div className="d-flex">
+                            <h5 className="mb-1">You can adopt these cats below</h5>
+                        </div>
+                        <small>Don't forget to feed them <i class="bi bi-emoji-smile"></i></small>
+                    </div>
+                {this.context.cats
+                        .filter((a) => !a.hasCollar)
+                        .map((cat) => (<NeighborsCats cat={cat} key={cat.id}/>))}
+            </div>
       </div>);
     }
 }
